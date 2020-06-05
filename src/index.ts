@@ -1,6 +1,4 @@
 export default (ctx, options) => {
-  console.log(ctx.helper.chalk.yellow('插件 '), 'taro-plugin-check-env');
-  console.log(ctx.helper.chalk.greenBright('开始 '), '检查环境变量');
   const {
     ENV_LIST
   } = options
@@ -16,6 +14,8 @@ export default (ctx, options) => {
   } = ctx
 
   ctx.onBuildStart(() => {
+    console.log(ctx.helper.chalk.yellow('插件 '), 'taro-plugin-check-env');
+    console.log(ctx.helper.chalk.greenBright('开始 '), '检查环境变量');
     for (const key in ENV_LIST) {
       if (ENV_LIST.hasOwnProperty(key)) {
         const element = ENV_LIST[key];
