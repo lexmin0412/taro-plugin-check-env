@@ -5,7 +5,7 @@ taro插件，用于在编译前的环境变量检查。
 ## 用法
 
 ```js
-const path = require('path')
+// config/index.js
 
 const config = {
   plugins: [
