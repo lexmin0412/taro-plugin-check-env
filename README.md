@@ -14,6 +14,7 @@ npm install taro-plugin-check-env -D
 
 ```js
 // config/index.js
+
 const config = {
   plugins: [
     [
