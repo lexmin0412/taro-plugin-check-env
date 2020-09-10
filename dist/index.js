@@ -16,7 +16,7 @@ exports.default = (ctx, options) => {
             if (err) {
                 throw new Error(`执行taro版本检查脚本失败: ${err}`);
             }
-            const versionTestResult = utils_1.checkTaroVersion(platform, taroVersion);
+            const versionTestResult = utils_1.checkTaroVersion(platform, taroVersion, options);
             if (versionTestResult.success) {
                 console.log('taro 版本检查通过', taroVersion);
                 for (const key in ENV_LIST) {
