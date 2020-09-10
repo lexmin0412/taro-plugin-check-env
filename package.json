@@ -1,6 +1,6 @@
 {
   "name": "taro-plugin-check-env",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "taro插件，用于在编译前的环境变量检查。",
   "main": "index.js",
   "scripts": {
