@@ -8,7 +8,7 @@ taro插件，用于在编译前的环境检查，包括以下功能：
 ## Installation
 
 ```bash
-npm install taro-plugin-check-env -D
+npm install taro-plugin-check-env -D -S
 ```
 
 ## Usage
