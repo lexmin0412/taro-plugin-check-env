@@ -4,7 +4,6 @@
  * @param taroVersion taro版本号
  */
 export const checkTaroVersion = (platform: 'weapp' | 'h5', taroVersion: string, options: any) => {
-  console.log('into checkTaroVersion options', options)
   const h5Version = options && options.taroVersion && options.taroVersion.h5 ? options.taroVersion.h5 : '2.2.7'
   const weappVersion = options && options.taroVersion && options.taroVersion.h5 ? options.taroVersion.weapp : '2.2.11'
   const platformText = platform === 'h5' ? 'h5' : '小程序';

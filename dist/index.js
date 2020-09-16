@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var child = require('child_process');
+const child = require('child_process');
 const utils_1 = require("./utils");
 exports.default = (ctx, options) => {
     const { ENV_LIST } = options;
@@ -9,16 +9,15 @@ exports.default = (ctx, options) => {
         const { runOpts: { platform } } = ctx;
         console.log(ctx.helper.chalk.yellow('插件 '), 'taro-plugin-check-env');
         console.log(ctx.helper.chalk.greenBright('开始 '), '检查环境变量');
-        child.exec('taro -v', function (err, sto) {
+        try {
+            // 通过执行taro -v命令获取当前taro版本号
+            const sto = child.execSync('taro -v').toString();
             const versionStartIndex = sto.indexOf('Taro v') + 6;
             const versionEndIndex = sto.indexOf('\n', versionStartIndex + 3);
             const taroVersion = sto.slice(versionStartIndex, versionEndIndex);
-            if (err) {
-                throw new Error(`执行taro版本检查脚本失败: ${err}`);
-            }
             const versionTestResult = utils_1.checkTaroVersion(platform, taroVersion, options);
             if (versionTestResult.success) {
-                console.log('taro 版本检查通过', taroVersion);
+                console.log(chalk.blueBright('结果 '), 'taro 版本检查通过✅', taroVersion);
                 for (const key in ENV_LIST) {
                     if (ENV_LIST.hasOwnProperty(key)) {
                         const element = ENV_LIST[key];
@@ -37,7 +36,10 @@ exports.default = (ctx, options) => {
             else {
                 throw new Error(`依赖版本检查不通过: ${versionTestResult.errMsg}`);
             }
-        });
+        }
+        catch (err) {
+            throw new Error(`执行taro版本检查脚本失败: ${err}`);
+        }
     });
 };
 //# sourceMappingURL=index.js.map
